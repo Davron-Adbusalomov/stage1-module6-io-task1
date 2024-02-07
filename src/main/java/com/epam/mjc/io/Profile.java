@@ -9,7 +9,7 @@ public class Profile {
     private String email;
     private Long phone;
 
-    public Profile() {
+    public Profile(String name, String age, String email, String phone) {
 
     }
     public Profile(String name, Integer age, String email, Long phone) {
