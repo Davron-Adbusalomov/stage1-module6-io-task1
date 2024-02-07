@@ -7,9 +7,6 @@ import java.io.IOException;
 
 
 public class FileReader {
-//    String directory = System.getProperty("user.home");
-//    String filename = "Profile.txt";
-//    String absolutePath = directory + File.separator + filename;
 
     public Profile getDataFromFile(File file) {
         String fileData = readFile(file);
@@ -31,7 +28,6 @@ public class FileReader {
             while ((ch = fileInputStream.read()) != -1){
                 stringBuilder.append((char) ch);
             }
-            System.out.println(stringBuilder);
             return stringBuilder.toString();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -46,7 +42,6 @@ public class FileReader {
         java.util.regex.Matcher matcher = pattern.matcher(fileData);
 
         if (matcher.find()) {
-            System.out.println(matcher.group(1).trim());
             return matcher.group(1).trim();
         } else {
             return null; // Handle the case when key is not found
