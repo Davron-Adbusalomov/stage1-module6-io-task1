@@ -15,9 +15,9 @@ public class FileReader {
         String fileData = readFile(file);
 
         String name = extractValueForKey("Name", fileData);
-        String age = extractValueForKey("Age", fileData);
+        int age = Integer.parseInt(extractValueForKey("Age", fileData));
         String email = extractValueForKey("Email", fileData);
-        String phone = extractValueForKey("Phone", fileData);
+        Long phone = Long.valueOf(extractValueForKey("Phone", fileData));
 
         return new Profile(name, age, email, phone);
     }
@@ -31,6 +31,7 @@ public class FileReader {
             while ((ch = fileInputStream.read()) != -1){
                 stringBuilder.append((char) ch);
             }
+            System.out.println(stringBuilder);
             return stringBuilder.toString();
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -45,6 +46,7 @@ public class FileReader {
         java.util.regex.Matcher matcher = pattern.matcher(fileData);
 
         if (matcher.find()) {
+            System.out.println(matcher.group(1).trim());
             return matcher.group(1).trim();
         } else {
             return null; // Handle the case when key is not found
